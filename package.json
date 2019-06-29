@@ -1,0 +1,16 @@
+{
+  "license": "UNLICENSE",
+  "scripts": {
+    "start": "gulp",
+    "buld": "gulp build"
+  },
+  "dependencies": {
+    "assemble": "^0.24.3",
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-extname": "^0.2.2",
+    "gulp-html-beautify": "^1.0.1",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^4.0.2"
+  }
+}
