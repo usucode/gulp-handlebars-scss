@@ -2,6 +2,7 @@
   "license": "UNLICENSE",
   "scripts": {
     "start": "gulp",
+    "php": "gulp php",
     "buld": "gulp build"
   },
   "dependencies": {

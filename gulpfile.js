@@ -60,5 +60,27 @@ function watch() {
   gulp.watch(paths.asset, asset)
 }
 
+// PHPViews
+const phpViews = () => {
+  app.partials(paths.views + "components/*.hbs")
+  app.layouts(paths.views + "layouts/*.hbs")
+  app.pages(paths.views + "*.hbs")
+  return app
+    .toStream("pages")
+    .pipe(plumber())
+    .pipe(app.renderFile({ layout: "main" }))
+    .pipe(htmlbeautify({ indent_size: 2 }))
+    .pipe(extname(".php"))
+    .pipe(app.dest("dist/"))
+}
+
+// PHPWatch
+function phpWatch() {
+  gulp.watch(paths.styles, styles)
+  gulp.watch(paths.views + "**/*", views)
+  gulp.watch(paths.asset, asset)
+}
+
 gulp.task("default", gulp.series(styles, views, asset, watch))
+gulp.task("php", gulp.series(styles, phpViews, asset, phpWatch))
 gulp.task("build", gulp.series(gulp.parallel(styles, views, asset)))
